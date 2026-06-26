@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عن الشركة | ديكور فوم</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<header class="header"><div class="header-inner">
+  <a href="index.html" class="logo">
+    <div class="logo-mark">ف</div>
+    <div class="logo-name">
+      <span class="name-main" data-ar="ديكور فوم" data-en="Decor Foam">ديكور فوم</span>
+    </div>
+  </a>
+  <nav class="nav-links"></nav>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle"></button>
+    <button id="lang-toggle" class="lang-toggle">EN</button>
+    <button class="menu-toggle"><span></span><span></span><span></span></button>
+  </div>
+</div></header>
+<nav class="mobile-nav"></nav>
+
+<!-- HERO -->
+<section style="
+  min-height:55vh;
+  display:flex; align-items:center;
+  background:var(--dark-layer);
+  position:relative; overflow:hidden;
+  padding-top:calc(var(--nav-height) + 3rem);
+">
+  <div class="orb orb-1" style="top:-20%;right:-10%"></div>
+  <div class="orb orb-3" style="bottom:-10%;left:5%"></div>
+  <div class="container" style="position:relative;z-index:1;text-align:center;padding-block:5rem">
+    <span class="section-badge" data-i18n="about_badge">من نحن</span>
+    <h1 class="section-title" style="color:#fff;margin:1rem 0;font-size:clamp(2.5rem,6vw,5.5rem)">
+      <span data-i18n="about_title">خبرة تمتد لأكثر من</span>
+      <br>
+      <span class="gradient-text" data-i18n="about_title2">١٥ عاماً</span>
+    </h1>
+    <p class="section-desc" style="color:rgba(255,255,255,.6);margin-inline:auto" data-i18n="about_p1">
+      شركة ديكور فوم رائدة في تصنيع وتوريد منتجات الفوم الديكورية
+    </p>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="stats-section">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="stats-grid stagger-children">
+      <div class="stat-item">
+        <div class="stat-number"><span data-counter data-target="15" data-suffix="+">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label" data-ar="سنة خبرة" data-en="Years Experience">سنة خبرة</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number"><span data-counter data-target="2000" data-suffix="+">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label" data-ar="مشروع منجز" data-en="Projects Done">مشروع منجز</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number"><span data-counter data-target="500" data-suffix="+">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label" data-ar="عميل سعيد" data-en="Happy Clients">عميل سعيد</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number"><span data-counter data-target="120" data-suffix="+">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label" data-ar="موظف متخصص" data-en="Specialist Staff">موظف متخصص</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-image-wrap reveal from-left">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85" alt="مصنع ديكور فوم" loading="lazy">
+        <div class="about-badge">
+          <div style="text-align:center">
+            <div style="font-size:2rem;font-weight:900;color:var(--accent)">2009</div>
+            <div style="font-size:.8rem;color:var(--text-muted)" data-ar="تأسست الشركة" data-en="Company Founded">تأسست الشركة</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-badge" data-i18n="about_badge">قصتنا</span>
+        <h2 class="section-title" style="margin:1rem 0">
+          <span data-ar="من مرآب صغير" data-en="From a Small Garage">من مرآب صغير</span>
+          <br>
+          <span class="highlight" id="story-h">إلى رواد الصناعة</span>
+        </h2>
+        <p style="color:var(--text-muted);line-height:1.9;margin-bottom:1rem" data-ar="بدأت قصتنا عام ٢٠٠٩ بأيدٍ شغوفة وحلم كبير. اليوم نعد من أكبر الشركات المتخصصة في تصنيع وتوريد منتجات الفوم الديكورية والعازلة في المملكة العربية السعودية." data-en="Our story began in 2009 with passionate hands and a big dream. Today we are one of the largest specialized companies in manufacturing and supplying decorative and insulating foam products in Saudi Arabia.">
+          بدأت قصتنا عام ٢٠٠٩ بأيدٍ شغوفة وحلم كبير. اليوم نعد من أكبر الشركات المتخصصة في تصنيع وتوريد منتجات الفوم الديكورية والعازلة في المملكة العربية السعودية.
+        </p>
+        <p style="color:var(--text-muted);line-height:1.9;margin-bottom:2rem" data-ar="نخدم قطاعات البناء والتشطيب والفعاليات والترفيه في جميع مناطق المملكة، مع التزام ثابت بالجودة والابتكار وخدمة العملاء." data-en="We serve construction, finishing, events and entertainment sectors across all regions of Saudi Arabia, with a steadfast commitment to quality, innovation and customer service.">
+          نخدم قطاعات البناء والتشطيب والفعاليات والترفيه في جميع مناطق المملكة، مع التزام ثابت بالجودة والابتكار وخدمة العملاء.
+        </p>
+        <div class="about-features">
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span data-i18n="about_feat1">ISO 9001 معتمد</span>
+          </div>
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span data-i18n="about_feat2">توصيل لكل المناطق</span>
+          </div>
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span data-i18n="about_feat3">تصنيع مخصص</span>
+          </div>
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span data-i18n="about_feat4">ضمان ٥ سنوات</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM / VALUES -->
+<section class="section" style="background:var(--surface-2)">
+  <div class="container">
+    <div class="text-center reveal" style="max-width:600px;margin-inline:auto;margin-bottom:4rem">
+      <span class="section-badge" data-ar="قيمنا" data-en="Our Values">قيمنا</span>
+      <h2 class="section-title" style="margin:1rem 0" data-ar="ما يميزنا" data-en="What Sets Us Apart">ما يميزنا</h2>
+    </div>
+    <div class="stagger-children" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem">
+      <div class="product-card" style="padding:2rem;cursor:default">
+        <div style="font-size:2.5rem;margin-bottom:1.25rem;color:var(--accent)">◈</div>
+        <h3 style="font-size:var(--text-xl);margin-bottom:.75rem" data-ar="الجودة أولاً" data-en="Quality First">الجودة أولاً</h3>
+        <p style="color:var(--text-muted);line-height:1.7" data-ar="نستخدم خامات عالية الجودة معتمدة دولياً" data-en="We use internationally certified high-quality materials">نستخدم خامات عالية الجودة معتمدة دولياً</p>
+      </div>
+      <div class="product-card" style="padding:2rem;cursor:default">
+        <div style="font-size:2.5rem;margin-bottom:1.25rem;color:var(--accent)">◉</div>
+        <h3 style="font-size:var(--text-xl);margin-bottom:.75rem" data-ar="الابتكار المستمر" data-en="Continuous Innovation">الابتكار المستمر</h3>
+        <p style="color:var(--text-muted);line-height:1.7" data-ar="نواكب أحدث تقنيات التشكيل والطباعة" data-en="We keep pace with the latest shaping and printing technologies">نواكب أحدث تقنيات التشكيل والطباعة</p>
+      </div>
+      <div class="product-card" style="padding:2rem;cursor:default">
+        <div style="font-size:2.5rem;margin-bottom:1.25rem;color:var(--accent)">◆</div>
+        <h3 style="font-size:var(--text-xl);margin-bottom:.75rem" data-ar="رضا العميل" data-en="Client Satisfaction">رضا العميل</h3>
+        <p style="color:var(--text-muted);line-height:1.7" data-ar="هدفنا الأول هو تجاوز توقعات عملائنا" data-en="Our top goal is exceeding client expectations">هدفنا الأول هو تجاوز توقعات عملائنا</p>
+      </div>
+      <div class="product-card" style="padding:2rem;cursor:default">
+        <div style="font-size:2.5rem;margin-bottom:1.25rem;color:var(--accent)">◇</div>
+        <h3 style="font-size:var(--text-xl);margin-bottom:.75rem" data-ar="الالتزام بالمواعيد" data-en="On-Time Delivery">الالتزام بالمواعيد</h3>
+        <p style="color:var(--text-muted);line-height:1.7" data-ar="نسلم مشاريعنا في الوقت المحدد دائماً" data-en="We always deliver projects on schedule">نسلم مشاريعنا في الوقت المحدد دائماً</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="bg-text" data-i18n="hero_line2">الجمال</div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2 data-i18n="cta_title">هل أنت جاهز لتحويل مشروعك؟</h2>
+    <p data-i18n="cta_desc">تواصل مع فريقنا المتخصص واحصل على استشارة مجانية</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-lg btn-cta-dark" data-i18n="cta_btn1">احصل على عرض سعر</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="footer-render"></footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/lang.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/animations.js"></script>
+<script src="../js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('story-h')?.classList.add('highlight');
+});
+</script>
+</body>
+</html>

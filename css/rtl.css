@@ -1,0 +1,59 @@
+/* ─── RTL OVERRIDES ─────────────────────────────────────────── */
+/* Most direction-sensitive rules use `margin-inline-start/end` or
+   `padding-inline-start/end` which auto-flip. This file only handles
+   cases that need explicit RTL/LTR differentiation. */
+
+html[dir="rtl"] .footer-col a::before { content: '←'; }
+html[dir="ltr"] .footer-col a::before { content: '→'; }
+
+/* Scroll progress: RTL = fill from right */
+html[dir="rtl"] #scroll-progress { transform-origin: right; }
+html[dir="ltr"] #scroll-progress { transform-origin: left; }
+
+/* Mobile nav slide direction */
+html[dir="rtl"] .mobile-nav { transform: translateX(100%); }
+html[dir="rtl"] .mobile-nav.open { transform: translateX(0); }
+html[dir="ltr"] .mobile-nav { transform: translateX(-100%); }
+html[dir="ltr"] .mobile-nav.open { transform: translateX(0); }
+
+/* Admin sidebar */
+html[dir="rtl"] .admin-sidebar { transform: translateX(100%); }
+html[dir="rtl"] .admin-sidebar.open { transform: translateX(0); }
+
+/* ─── FONT SIZES FOR ARABIC ─────────────────────────────────── */
+/* Arabic letters are generally slightly larger, so hero title on
+   RTL gets a touch more line-height */
+html[dir="rtl"] .hero-title { line-height: 1.15; }
+html[dir="rtl"] .section-title { line-height: 1.25; }
+
+/* About badge position flip */
+html[dir="rtl"] .about-badge { right: auto; left: -2rem; }
+html[dir="ltr"] .about-badge { left: auto; right: -2rem; }
+
+/* Category card number corner */
+html[dir="rtl"] .category-card .card-number { right: auto; left: 1.25rem; }
+html[dir="ltr"] .category-card .card-number { left: auto; right: 1.25rem; }
+
+/* Product badge corner */
+html[dir="rtl"] .product-card .card-badge { right: 0.75rem; left: auto; }
+html[dir="ltr"] .product-card .card-badge { left: 0.75rem; right: auto; }
+
+/* Arrow on cards */
+html[dir="rtl"] .category-card .card-arrow { transform: translateX(12px); }
+html[dir="ltr"] .category-card .card-arrow { transform: translateX(-12px); }
+html[dir="rtl"] .category-card:hover .card-arrow { transform: translateX(0); }
+html[dir="ltr"] .category-card:hover .card-arrow { transform: translateX(0); }
+
+/* Stat dividers */
+html[dir="rtl"] .stat-item::after { right: 0; left: auto; }
+html[dir="ltr"] .stat-item::after { right: 0; left: auto; }
+
+/* Section title underline origin */
+html[dir="rtl"] .section-title .highlight::after {
+  transform-origin: right;
+  transform: scaleX(0);
+}
+html[dir="rtl"] .section-title .highlight.animated::after {
+  transform-origin: right;
+  transform: scaleX(1);
+}

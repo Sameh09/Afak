@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صور من أعمالنا | ديكور فوم</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<header class="header"><div class="header-inner">
+  <a href="index.html" class="logo">
+    <div class="logo-mark">ف</div>
+    <div class="logo-name">
+      <span class="name-main" data-ar="ديكور فوم" data-en="Decor Foam">ديكور فوم</span>
+    </div>
+  </a>
+  <nav class="nav-links"></nav>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle"></button>
+    <button id="lang-toggle" class="lang-toggle">EN</button>
+    <button class="menu-toggle"><span></span><span></span><span></span></button>
+  </div>
+</div></header>
+<nav class="mobile-nav"></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="breadcrumb_home">الرئيسية</a>
+      <span class="breadcrumb-sep">/</span>
+      <span data-i18n="nav_gallery">أعمالنا</span>
+    </div>
+    <span class="section-badge" data-i18n="projects_badge">صور من أعمالنا</span>
+    <h1 class="section-title" style="margin:.75rem 0" data-i18n="gallery_title">معرض أعمالنا</h1>
+    <p class="section-desc" data-i18n="gallery_desc">نماذج حقيقية من مشاريعنا المنجزة</p>
+  </div>
+  <div class="orb orb-1"></div>
+</section>
+
+<!-- FILTERS -->
+<section style="padding-block:2rem;border-bottom:1px solid var(--border);background:var(--surface-2)">
+  <div class="container">
+    <div class="filter-chips">
+      <button class="filter-chip active" data-filter="all" data-i18n="filter_all">الكل</button>
+      <button class="filter-chip" data-filter="residential" data-i18n="filter_residential">مدن سكنية</button>
+      <button class="filter-chip" data-filter="palaces" data-i18n="filter_palaces">قصور</button>
+      <button class="filter-chip" data-filter="hotels" data-i18n="filter_hotels">فنادق</button>
+      <button class="filter-chip" data-filter="villas" data-i18n="filter_villas">فيلل</button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<main class="section">
+  <div class="container">
+    <div class="bento-grid stagger-children" id="gallery-full"></div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="footer-render"></footer>
+
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close">✕</button>
+  <img src="" alt="">
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/lang.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/animations.js"></script>
+<script src="../js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('gallery-full');
+  if (!grid) return;
+
+  /* Expand gallery with more items per category */
+  const allWorks = [
+    ...DATA.galleryWorks,
+    { id: 'g9',  title_ar: 'فيلا النخيل',           title_en: 'Palm Villa',              category: 'villas',      image: 'https://images.unsplash.com/photo-1613977257592-4a9a32f9141b?w=700&q=80', span: 'normal' },
+    { id: 'g10', title_ar: 'قصر الوادي - الرياض',   title_en: 'Al-Wadi Palace - Riyadh', category: 'palaces',     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80', span: 'normal' },
+    { id: 'g11', title_ar: 'فندق الصحراء - الرياض', title_en: 'Desert Hotel - Riyadh',   category: 'hotels',      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=80', span: 'normal' },
+    { id: 'g12', title_ar: 'مدينة بدر - المدينة',   title_en: 'Badr City - Madinah',     category: 'residential', image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?w=700&q=80', span: 'wide' },
+  ];
+
+  const classMap = { 'span-2':'item-span-2', 'wide':'item-wide', 'normal':'item-normal' };
+
+  grid.innerHTML = allWorks.map(w => `
+    <div class="gallery-card ${classMap[w.span]||'item-normal'}"
+         data-category="${w.category}"
+         data-lightbox="${w.image}"
+         style="cursor:pointer;min-height:220px">
+      <img src="${w.image}" alt="${w.title_ar}" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+        <div>
+          <div style="color:#fff;font-weight:700" data-ar="${w.title_ar}" data-en="${w.title_en||w.title_ar}">${w.title_ar}</div>
+          <div style="color:rgba(255,255,255,.6);font-size:.8rem;margin-top:.25rem">${w.category}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  initCardHover();
+  initScrollReveal();
+  initGalleryFilter();
+  initLightbox();
+});
+</script>
+</body>
+</html>

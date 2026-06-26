@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم — دخول | ديكور فوم</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/rtl.css">
+  <style>
+    body { background: var(--dark-layer); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .login-card {
+      width: 100%; max-width: 420px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-lg);
+      animation: fade-in-up .8s var(--ease-out) both;
+    }
+    .login-card .logo { justify-content: center; margin-bottom: 2rem; }
+    .login-orb { position: fixed; }
+  </style>
+</head>
+<body>
+<div class="orb orb-1 login-orb" style="top:-10%;left:-5%"></div>
+<div class="orb orb-2 login-orb" style="bottom:-10%;right:-5%"></div>
+
+<div class="login-card">
+  <div class="logo" style="display:flex;align-items:center;gap:.75rem;margin-bottom:2rem">
+    <div class="logo-mark">ف</div>
+    <div class="logo-name">
+      <span style="font-size:1.2rem;font-weight:900">ديكور فوم</span>
+      <span style="display:block;font-size:.75rem;color:var(--text-muted)">لوحة التحكم</span>
+    </div>
+  </div>
+
+  <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:.5rem" data-i18n="admin_login">تسجيل الدخول</h1>
+  <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:2rem">أدخل بيانات حسابك للوصول للوحة التحكم</p>
+
+  <form id="login-form">
+    <div class="form-group">
+      <label class="form-label" data-i18n="admin_email">البريد الإلكتروني</label>
+      <input type="email" class="form-input" id="login-email"
+        placeholder="admin@decor-foam.com" required autocomplete="email">
+    </div>
+    <div class="form-group">
+      <label class="form-label" data-i18n="admin_password">كلمة المرور</label>
+      <div style="position:relative">
+        <input type="password" class="form-input" id="login-password"
+          placeholder="••••••••" required autocomplete="current-password" style="padding-inline-end:3rem">
+        <button type="button" id="pw-toggle" style="
+          position:absolute;inset-inline-end:.75rem;top:50%;transform:translateY(-50%);
+          color:var(--text-muted);padding:.25rem;
+        " onclick="togglePw()">
+          <svg id="pw-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="login-error" style="display:none;color:#ef4444;font-size:.85rem;margin-bottom:1rem;padding:.75rem;background:rgba(239,68,68,.1);border-radius:var(--radius-sm)"></div>
+
+    <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.5rem" data-i18n="admin_btn">دخول</button>
+  </form>
+
+  <div style="text-align:center;margin-top:1.5rem">
+    <a href="../index.html" style="font-size:.85rem;color:var(--text-muted);display:inline-flex;align-items:center;gap:.4rem">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      <span data-ar="العودة للموقع" data-en="Back to Website">العودة للموقع</span>
+    </a>
+  </div>
+
+  <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--text-light);text-align:center">
+    <span data-ar="بيانات تجريبية: admin@decor-foam.com / admin123" data-en="Demo: admin@decor-foam.com / admin123">
+      بيانات تجريبية: admin@decor-foam.com / admin123
+    </span>
+  </div>
+</div>
+
+<script src="../../js/data.js"></script>
+<script src="../../js/lang.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../js/animations.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initLang();
+    initRipple();
+
+    /* redirect if already logged in */
+    if (localStorage.getItem('admin_auth') === 'true') {
+      location.href = 'dashboard.html';
+    }
+  });
+
+  function togglePw() {
+    const inp  = document.getElementById('login-password');
+    const icon = document.getElementById('pw-icon');
+    if (inp.type === 'password') {
+      inp.type = 'text';
+      icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`;
+    } else {
+      inp.type = 'password';
+      icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+    }
+  }
+
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const pass  = document.getElementById('login-password').value;
+    const err   = document.getElementById('login-error');
+
+    if (email === 'admin@decor-foam.com' && pass === 'admin123') {
+      localStorage.setItem('admin_auth', 'true');
+      localStorage.setItem('admin_name', 'مدير النظام');
+      location.href = 'dashboard.html';
+    } else {
+      err.textContent = window.LANG === 'ar' ? 'البريد الإلكتروني أو كلمة المرور غير صحيحة.' : 'Invalid email or password.';
+      err.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>

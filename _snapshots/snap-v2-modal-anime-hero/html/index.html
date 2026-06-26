@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ديكور فوم | Decor Foam — EPS · PU · فعاليات · عزل</title>
+  <meta name="description" content="ديكور فوم — رواد صناعة ديكورات الفوم EPS وPU والعزل الحراري وصناعة الفعاليات في المملكة العربية السعودية منذ 2009">
+  <meta property="og:title" content="ديكور فوم | Decor Foam">
+  <meta property="og:description" content="ديكورات فوم احترافية · عزل حراري ومائي · صناعة الفعاليات">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- ─── ANTI-FLASH THEME SCRIPT ── must be inline before CSS ── -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+</head>
+<body>
+
+<!-- ── SCROLL PROGRESS ── -->
+<div id="scroll-progress"></div>
+
+<!-- ── CUSTOM CURSOR ── -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ════════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════ -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <div class="logo-mark">ف</div>
+      <div class="logo-name">
+        <span class="name-main" data-ar="ديكور فوم" data-en="Decor Foam">ديكور فوم</span>
+        <span class="name-sub" data-ar="رواد تشكيل الفوم" data-en="Foam Shaping Leaders">رواد تشكيل الفوم</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav links (rendered by JS) -->
+    <nav class="nav-links" aria-label="main navigation"></nav>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="toggle theme">
+        <!-- icon injected by theme.js -->
+      </button>
+      <button id="lang-toggle" class="lang-toggle" aria-label="switch language">EN</button>
+      <button class="menu-toggle" aria-label="toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav (rendered by JS) -->
+<nav class="mobile-nav" aria-label="mobile navigation"></nav>
+
+
+<!-- ════════════════════════════════════════════════════════
+     HERO  (2-column split)
+════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <!-- Background layers -->
+  <div class="hero-bg">
+    <div class="orb orb-1" style="top:-12%;left:-8%"></div>
+    <div class="orb orb-2" style="top:35%;right:-10%"></div>
+    <div class="orb orb-3" style="bottom:-8%;left:28%"></div>
+  </div>
+  <canvas class="hero-canvas" id="hero-canvas"></canvas>
+  <div class="hero-grid"></div>
+
+  <!-- 2-col content -->
+  <div class="hero-inner">
+
+    <!-- Left / Start: text -->
+    <div class="hero-text-col">
+      <div class="hero-badge" id="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span data-i18n="hero_badge">منذ ٢٠٠٩ · رواد ديكور الفوم</span>
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        <span class="line" data-i18n="hero_line1">نصنع</span>
+        <span class="line accent" data-i18n="hero_line2">الجمال</span>
+        <span class="line outline" data-i18n="hero_line3">من الفوم</span>
+      </h1>
+
+      <p class="hero-desc" id="hero-desc" data-i18n="hero_desc">
+        ديكورات فوم EPS وPU احترافية · عزل حراري ومائي · صناعة الفعاليات والمجسمات · جميع أنحاء المملكة
+      </p>
+
+      <div class="hero-ctas" id="hero-ctas">
+        <a href="category.html?cat=eps" class="btn btn-primary btn-lg">
+          <span data-i18n="hero_cta1">استكشف المنتجات</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a href="gallery.html" class="btn btn-outline btn-lg hero-outline-btn" data-i18n="hero_cta2">مشاريعنا</a>
+      </div>
+
+      <!-- Mini stats -->
+      <div class="hero-stats-row">
+        <div class="hero-mini-stat">
+          <span class="hero-stat-num">+15</span>
+          <span class="hero-stat-lbl" data-ar="سنة خبرة" data-en="Years">سنة خبرة</span>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-mini-stat">
+          <span class="hero-stat-num">+2000</span>
+          <span class="hero-stat-lbl" data-ar="مشروع منجز" data-en="Projects">مشروع</span>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-mini-stat">
+          <span class="hero-stat-num">+500</span>
+          <span class="hero-stat-lbl" data-ar="عميل راضٍ" data-en="Clients">عميل</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right / End: visual card stack (filled by JS) -->
+    <div class="hero-visual-col" id="hero-visual-col">
+      <div class="hero-card-stack" id="hero-card-stack"></div>
+
+      <!-- Floating info badge -->
+      <div class="hero-accent-badge" id="hero-accent-badge">
+        <span class="pulse-dot"></span>
+        <span data-ar="+40 منتج متاح" data-en="+40 Products">+40 منتج متاح</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator">
+    <span data-i18n="hero_scroll">اسحب للأسفل</span>
+    <div class="scroll-line-wrap"><div class="scroll-line-inner"></div></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     MARQUEE STRIP
+════════════════════════════════════════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+     CATEGORIES SECTION  (asymmetric bento)
+════════════════════════════════════════════════════════ -->
+<section class="section" id="categories" style="background:var(--bg)">
+  <div class="container">
+    <header style="margin-bottom:3rem" class="reveal">
+      <span class="section-badge" data-i18n="cats_badge">تصفح حسب التصنيف</span>
+      <h2 class="section-title">
+        <span data-i18n="cats_title">مجالاتنا </span>
+        <span class="highlight" id="cats-highlight">الرئيسية</span>
+      </h2>
+      <p class="section-desc" data-i18n="cats_desc">نخدم قطاعات متعددة بجودة عالية ومنتجات مبتكرة</p>
+    </header>
+
+    <style>
+      /* ── Cats bento grid — explicit placement, no auto-placement bugs ── */
+      #cats-grid {
+        display: grid;
+        grid-template-columns: 1.45fr 1fr 1fr;
+        grid-template-rows: 380px 260px;
+        gap: 1rem;
+      }
+      #cats-grid .category-card { aspect-ratio: unset; height: 100%; }
+
+      /* Explicit slot for every card */
+      html[dir="rtl"] #cats-grid .category-card:nth-child(1) { grid-column:3; grid-row:1/3; }
+      html[dir="rtl"] #cats-grid .category-card:nth-child(2) { grid-column:2; grid-row:1; }
+      html[dir="rtl"] #cats-grid .category-card:nth-child(3) { grid-column:1; grid-row:1; }
+      html[dir="rtl"] #cats-grid .category-card:nth-child(4) { grid-column:1/3; grid-row:2; }
+
+      html[dir="ltr"] #cats-grid .category-card:nth-child(1) { grid-column:1; grid-row:1/3; }
+      html[dir="ltr"] #cats-grid .category-card:nth-child(2) { grid-column:2; grid-row:1; }
+      html[dir="ltr"] #cats-grid .category-card:nth-child(3) { grid-column:3; grid-row:1; }
+      html[dir="ltr"] #cats-grid .category-card:nth-child(4) { grid-column:2/4; grid-row:2; }
+
+      @media(max-width:900px) {
+        #cats-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 300px 240px 220px;
+        }
+        #cats-grid .category-card:nth-child(n) { grid-column: auto !important; grid-row: auto !important; }
+        #cats-grid .category-card:nth-child(4) { grid-column: 1 / 3 !important; }
+      }
+      @media(max-width:560px) {
+        #cats-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(4, 260px);
+        }
+        #cats-grid .category-card:nth-child(n) { grid-column: 1 !important; grid-row: auto !important; }
+      }
+    </style>
+    <!-- Bento layout: [big tall] [sm] [sm] / [big tall] [wide bottom] -->
+    <div id="cats-grid" data-anime-reveal="cats">
+      <!-- Injected by JS below -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FEATURED PRODUCTS
+════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--surface-2)">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem">
+      <div class="reveal">
+        <span class="section-badge" data-i18n="featured_badge">منتجاتنا المميزة</span>
+        <h2 class="section-title" data-i18n="featured_title">الأكثر طلباً</h2>
+        <p class="section-desc" data-i18n="featured_desc">اختيارات مميزة من كتالوج منتجاتنا الواسع</p>
+      </div>
+      <a href="category.html?cat=eps" class="btn btn-ghost reveal" data-i18n="view_all">عرض الكل</a>
+    </div>
+    <div class="featured-grid" id="featured-grid" data-anime-reveal="products"></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     STATS SECTION
+════════════════════════════════════════════════════════ -->
+<section class="stats-section" id="stats">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+      <span class="section-badge" style="--accent:212,168,83" data-i18n="stats_badge">أرقامنا تتحدث</span>
+    </div>
+    <div class="stats-grid stagger-children" id="stats-grid"></div>
+  </div>
+  <div class="orb orb-1" style="top:-30%;left:-10%;opacity:.4"></div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PROJECTS BENTO GALLERY
+════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem">
+      <div class="reveal">
+        <span class="section-badge" data-i18n="projects_badge">صور من أعمالنا</span>
+        <h2 class="section-title" data-i18n="projects_title">مشاريع نفخر بها</h2>
+        <p class="section-desc" data-i18n="projects_desc">نماذج من مشاريعنا المنجزة في مختلف مناطق المملكة</p>
+      </div>
+      <a href="gallery.html" class="btn btn-outline reveal" data-i18n="view_all">عرض الكل</a>
+    </div>
+    <div class="bento-grid stagger-children" id="gallery-bento"></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     ABOUT SECTION (diagonal split)
+════════════════════════════════════════════════════════ -->
+<section class="section about-section" style="background:var(--surface-2);overflow:visible">
+  <div class="container">
+    <div class="about-split">
+      <!-- Image side -->
+      <div class="about-image-wrap reveal from-left">
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85"
+          alt="فريق العمل - ديكور فوم"
+          loading="lazy">
+        <!-- floating badge -->
+        <div class="about-badge">
+          <div style="text-align:center">
+            <div style="font-size:1.8rem;font-weight:900;color:var(--accent)" id="about-badge-num" data-i18n="about_badge2_num">+120</div>
+            <div style="font-size:.8rem;color:var(--text-muted)" data-i18n="about_badge2_txt">موظف متخصص</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="about-text reveal">
+        <span class="section-badge" data-i18n="about_badge">من نحن</span>
+        <h2 class="section-title" style="margin:1rem 0 1.5rem">
+          <span data-i18n="about_title">خبرة تمتد لأكثر من</span>
+          <br>
+          <span class="highlight" id="about-highlight" data-i18n="about_title2">١٥ عاماً</span>
+        </h2>
+        <p data-i18n="about_p1" style="color:var(--text-muted);line-height:1.8;margin-bottom:1rem">
+          شركة ديكور فوم رائدة في تصنيع وتوريد منتجات الفوم الديكورية والعازلة في المملكة العربية السعودية.
+        </p>
+        <p data-i18n="about_p2" style="color:var(--text-muted);line-height:1.8;margin-bottom:2rem">
+          نستخدم أحدث تقنيات التشكيل والطباعة لنقدم منتجات تجمع بين الجمال والمتانة والكفاءة الحرارية.
+        </p>
+
+        <div class="about-features">
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span data-i18n="about_feat1">ISO 9001 معتمد</span>
+          </div>
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span data-i18n="about_feat2">توصيل لكل المناطق</span>
+          </div>
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span data-i18n="about_feat3">تصنيع مخصص</span>
+          </div>
+          <div class="feature-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span data-i18n="about_feat4">ضمان ٥ سنوات</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem">
+          <a href="about.html" class="btn btn-primary" data-i18n="about_learn">اعرف أكثر عنا</a>
+          <a href="contact.html" class="btn btn-outline" data-i18n="about_contact">تواصل معنا</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     CTA BAND
+════════════════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="bg-text" data-i18n="hero_line2">الجمال</div>
+  <div class="container" style="position:relative;z-index:1">
+    <h2 data-i18n="cta_title">هل أنت جاهز لتحويل مشروعك؟</h2>
+    <p data-i18n="cta_desc">تواصل مع فريقنا المتخصص واحصل على استشارة مجانية وعرض سعر مناسب لمشروعك</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-lg btn-cta-dark" data-i18n="cta_btn1">احصل على عرض سعر</a>
+      <a href="tel:+966500000000" class="btn btn-lg btn-cta-light" data-i18n="cta_btn2">اتصل بنا الآن</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════════════ -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="reveal">
+        <span class="section-badge" data-i18n="nl_title">ابقَ على اطلاع دائم</span>
+        <h2 class="section-title" style="margin:.75rem 0" data-i18n="nl_title">ابقَ على اطلاع دائم</h2>
+        <p class="section-desc" data-i18n="nl_desc">اشترك في نشرتنا البريدية لتصلك أحدث المنتجات والعروض والمشاريع</p>
+        <form class="newsletter-form" id="nl-form" style="margin-top:1.5rem">
+          <input type="email" data-i18n-placeholder="nl_placeholder" placeholder="بريدك الإلكتروني" required>
+          <button type="submit" class="btn btn-primary" data-i18n="nl_btn">اشترك الآن</button>
+        </form>
+        <p style="font-size:.75rem;color:var(--text-light);margin-top:.75rem" data-i18n="nl_privacy">
+          لن نشارك بريدك مع أي طرف ثالث. يمكنك إلغاء الاشتراك في أي وقت.
+        </p>
+      </div>
+
+      <!-- Decorative right side -->
+      <div class="reveal from-right" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;text-align:center">
+          <div style="font-size:2rem;font-weight:900;color:var(--accent)">15+</div>
+          <div style="font-size:.8rem;color:var(--text-muted)" data-ar="سنة خبرة" data-en="Years">سنة خبرة</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;text-align:center">
+          <div style="font-size:2rem;font-weight:900;color:var(--accent)">500+</div>
+          <div style="font-size:.8rem;color:var(--text-muted)" data-ar="عميل" data-en="Clients">عميل</div>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));border-radius:var(--radius-lg);padding:1.5rem;text-align:center;grid-column:span 2">
+          <div style="font-size:2rem;font-weight:900;color:#0a0a0a">2000+</div>
+          <div style="font-size:.8rem;color:rgba(0,0,0,.6)" data-ar="مشروع منجز" data-en="Projects">مشروع منجز</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER (rendered by JS)
+════════════════════════════════════════════════════════ -->
+<footer class="footer" id="footer-render"></footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" aria-label="close">✕</button>
+  <img src="" alt="gallery image">
+</div>
+
+<!-- Toast container (created dynamically) -->
+
+<!-- ─── SCRIPTS ── -->
+<script src="../js/data.js"></script>
+<script src="../js/lang.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/animations.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/modal.js"></script>
+<script src="../js/anime-effects.js" defer></script>
+<script>
+/* ── Page-specific: render categories grid ── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderHeroVisual();
+  renderCatsGrid();
+  renderFeaturedGrid();
+  renderStatsGrid();
+  renderGalleryBento();
+});
+
+function renderCatsGrid() {
+  const grid = document.getElementById('cats-grid');
+  if (!grid) return;
+  /* No inline style spans — CSS nth-child handles all placement */
+  grid.innerHTML = DATA.topCategories.map((c, i) => `
+    <a href="category.html?cat=${c.id}" class="category-card" onclick="event.preventDefault();openModal('cat','${c.id}')">
+      <img src="${c.image}" alt="${c.name_ar}" loading="${i < 2 ? 'eager' : 'lazy'}">
+      <div class="card-overlay"></div>
+      <div class="card-glow"></div>
+      <div class="card-number">${String(i + 1).padStart(2,'0')}</div>
+      <div class="card-content">
+        <div class="card-icon" style="font-size:1.3rem">${c.icon}</div>
+        <h3 data-ar="${c.name_ar}" data-en="${c.name_en||c.name_ar}">${c.name_ar}</h3>
+        <p data-ar="${c.desc_ar}" data-en="${c.desc_en||c.desc_ar}">${c.desc_ar}</p>
+        <div class="card-arrow">
+          <span data-i18n="explore">استكشف</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+    </a>
+  `).join('');
+}
+
+function renderHeroVisual() {
+  const stack = document.getElementById('hero-card-stack');
+  if (!stack || !DATA.featuredProducts) return;
+  const lang = window.LANG || 'ar';
+  DATA.featuredProducts.slice(0, 3).forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = `hero-card-item hc-${i + 1}`;
+    div.innerHTML = `
+      <img src="${p.image}" alt="${p['title_'+lang]||p.title_ar}" loading="${i===0?'eager':'lazy'}">
+      <div class="hero-card-label" data-ar="${p.title_ar}" data-en="${p.title_en||p.title_ar}">${p['title_'+lang]||p.title_ar}</div>`;
+    stack.appendChild(div);
+  });
+}
+
+function renderFeaturedGrid() {
+  const grid = document.getElementById('featured-grid');
+  if (!grid) return;
+  grid.innerHTML = DATA.featuredProducts.map(p => `
+    <article class="product-card" onclick="openModal('product','${p.id}')" style="cursor:pointer">
+      <div class="card-img">
+        <img src="${p.image}" alt="${p.title_ar}" loading="lazy">
+        <div class="card-img-glow"></div>
+        ${p.badge_ar ? `<div class="card-badge" data-ar="${p.badge_ar}" data-en="${p.badge_en||p.badge_ar}">${p.badge_ar}</div>` : ''}
+        <div class="card-hover-bar">
+          <span class="card-hover-btn" data-i18n="view_product">عرض المنتج</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category" data-ar="${p.category_ar}" data-en="${p.category_en||p.category_ar}">${p.category_ar}</div>
+        <h3 data-ar="${p.title_ar}" data-en="${p.title_en||p.title_ar}">${p.title_ar}</h3>
+        <p data-ar="${p.desc_ar}" data-en="${p.desc_en||p.desc_ar}">${p.desc_ar}</p>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderStatsGrid() {
+  const grid = document.getElementById('stats-grid');
+  if (!grid) return;
+  grid.innerHTML = DATA.stats.map(s => `
+    <div class="stat-item">
+      <div class="stat-number">
+        <span data-counter data-target="${s.number}" data-suffix="${s.suffix}">0${s.suffix}</span>
+      </div>
+      <div class="stat-label" data-ar="${s.label_ar}" data-en="${s.label_en||s.label_ar}">${s.label_ar}</div>
+    </div>
+  `).join('');
+}
+
+function renderGalleryBento() {
+  const grid = document.getElementById('gallery-bento');
+  if (!grid) return;
+  const works = DATA.galleryWorks.slice(0, 6);
+  const classMap = { 'span-2': 'item-span-2', 'wide': 'item-wide', 'normal': 'item-normal' };
+  grid.innerHTML = works.map(w => `
+    <div class="gallery-card ${classMap[w.span] || 'item-normal'}"
+         data-category="${w.category}"
+         data-lightbox="${w.image}"
+         style="cursor:pointer">
+      <img src="${w.image}" alt="${w.title_ar}" loading="lazy">
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+        <div>
+          <div style="color:#fff;font-weight:700;font-size:.95rem" data-ar="${w.title_ar}" data-en="${w.title_en||w.title_ar}">${w.title_ar}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المنتج | ديكور فوم</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<header class="header"><div class="header-inner">
+  <a href="index.html" class="logo">
+    <div class="logo-mark">ف</div>
+    <div class="logo-name">
+      <span class="name-main" data-ar="ديكور فوم" data-en="Decor Foam">ديكور فوم</span>
+    </div>
+  </a>
+  <nav class="nav-links"></nav>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle"></button>
+    <button id="lang-toggle" class="lang-toggle">EN</button>
+    <button class="menu-toggle"><span></span><span></span><span></span></button>
+  </div>
+</div></header>
+<nav class="mobile-nav"></nav>
+
+<div id="product-wrap" style="padding-top:var(--nav-height)">
+  <!-- Rendered by JS renderProductPage() -->
+  <div style="min-height:80vh;display:flex;align-items:center;justify-content:center">
+    <div class="skeleton" style="width:60px;height:60px;border-radius:50%"></div>
+  </div>
+</div>
+
+<footer class="footer" id="footer-render"></footer>
+
+<script src="../js/data.js"></script>
+<script src="../js/lang.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/animations.js"></script>
+<script src="../js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderProductPage();
+});
+</script>
+</body>
+</html>

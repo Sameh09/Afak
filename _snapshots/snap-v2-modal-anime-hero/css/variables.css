@@ -1,0 +1,94 @@
+/* ─── DESIGN TOKENS ────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg:            #fafaf8;
+  --surface:       #ffffff;
+  --surface-2:     #f3f2ef;
+  --surface-3:     #eaeae5;
+
+  /* Text */
+  --text:          #0a0a0a;
+  --text-muted:    #64748b;
+  --text-light:    #94a3b8;
+
+  /* Accent — Gold */
+  --accent:        #d4a853;
+  --accent-light:  #e8c87a;
+  --accent-dark:   #b8893a;
+  --accent-rgb:    212, 168, 83;
+
+  /* Dark layer used on overlays */
+  --dark-layer:    #0a0a0f;
+
+  /* Nav */
+  --nav-bg:        rgba(250,250,248,0.88);
+  --nav-height:    80px;
+  --nav-height-sm: 60px;
+
+  /* Borders */
+  --border:        #e2e8f0;
+  --border-subtle: #f1f5f9;
+
+  /* Shadows */
+  --shadow-sm:     0 2px 8px  rgba(0,0,0,0.06);
+  --shadow-md:     0 4px 24px rgba(0,0,0,0.10);
+  --shadow-lg:     0 8px 48px rgba(0,0,0,0.14);
+  --shadow-glow:   0 0 60px rgba(212,168,83,0.35);
+  --card-shadow:   0 4px 24px rgba(0,0,0,0.08);
+  --card-hover-shadow: 0 24px 80px rgba(212,168,83,0.22);
+
+  /* Radii */
+  --radius-sm:  0.5rem;
+  --radius:     1rem;
+  --radius-lg:  1.5rem;
+  --radius-xl:  2rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:    cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Typography scale */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2rem;
+  --text-4xl:  2.75rem;
+  --text-5xl:  3.75rem;
+  --text-6xl:  5rem;
+  --text-7xl:  7rem;
+
+  /* Spacing */
+  --section-py: clamp(5rem, 8vw, 9rem);
+  --container:  90rem;
+  --gutter:     clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ─── DARK MODE ────────────────────────────────────────────── */
+html.dark {
+  --bg:           #080810;
+  --surface:      #0f0f1c;
+  --surface-2:    #14142a;
+  --surface-3:    #1a1a35;
+
+  --text:         #f0f0f0;
+  --text-muted:   #94a3b8;
+  --text-light:   #64748b;
+
+  --nav-bg:       rgba(8,8,16,0.92);
+  --border:       #1e1e38;
+  --border-subtle:#161630;
+
+  --shadow-sm:    0 2px 8px  rgba(0,0,0,0.4);
+  --shadow-md:    0 4px 24px rgba(0,0,0,0.5);
+  --shadow-lg:    0 8px 48px rgba(0,0,0,0.6);
+  --shadow-glow:  0 0 80px rgba(212,168,83,0.45);
+  --card-shadow:  0 4px 24px rgba(0,0,0,0.45);
+  --card-hover-shadow: 0 24px 80px rgba(212,168,83,0.32);
+}

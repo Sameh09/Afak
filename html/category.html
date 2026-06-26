@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تصنيف المنتجات | ديكور فوم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- HEADER -->
+<header class="header"><div class="header-inner">
+  <a href="index.html" class="logo">
+    <div class="logo-mark">ف</div>
+    <div class="logo-name">
+      <span class="name-main" data-ar="ديكور فوم" data-en="Decor Foam">ديكور فوم</span>
+      <span class="name-sub" data-ar="رواد تشكيل الفوم" data-en="Foam Leaders">رواد تشكيل الفوم</span>
+    </div>
+  </a>
+  <nav class="nav-links"></nav>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle"></button>
+    <button id="lang-toggle" class="lang-toggle">EN</button>
+    <button class="menu-toggle"><span></span><span></span><span></span></button>
+  </div>
+</div></header>
+<nav class="mobile-nav"></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="breadcrumb_home">الرئيسية</a>
+      <span class="breadcrumb-sep">/</span>
+      <span id="cat-title">—</span>
+    </div>
+    <span class="section-badge">منتجاتنا</span>
+    <h1 class="section-title" id="cat-title" style="margin:.75rem 0">—</h1>
+    <p class="section-desc" id="cat-desc"></p>
+  </div>
+  <div class="orb orb-1"></div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="section">
+  <div class="container" id="cat-main">
+    <!-- Rendered by JS renderCategoryPage() -->
+    <div style="text-align:center;padding:4rem">
+      <div class="skeleton" style="height:2rem;width:200px;margin:0 auto 1rem"></div>
+      <div class="skeleton" style="height:1rem;width:300px;margin:0 auto"></div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="footer-render"></footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close">✕</button>
+  <img src="" alt="">
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/lang.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/animations.js"></script>
+<script src="../js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderCategoryPage();
+});
+</script>
+</body>
+</html>
