@@ -387,6 +387,7 @@ html:not(.dark) .menu-toggle span { background: rgba(0,0,0,0.7); }
 /* Mobile drawer */
 .mobile-nav {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1100; /* above .header (1000) and side dock */
   background: rgba(6,6,14,0.97);
   backdrop-filter: blur(30px);
   transform: translateX(100%);
