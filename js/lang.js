@@ -216,10 +216,14 @@ function setLanguage(lang) {
   const btn = document.getElementById('lang-toggle');
   if (btn) btn.textContent = lang === 'ar' ? 'EN' : 'ع';
 
-  /* bilingual content nodes: [data-ar] + [data-en] */
+  /* bilingual content nodes: [data-ar] + [data-en]
+     Skip elements that contain child elements (e.g. links with SVG icons) */
   document.querySelectorAll('[data-ar]').forEach(el => {
+    if (el.children.length > 0) return;
     el.textContent = lang === 'ar' ? el.getAttribute('data-ar') : (el.getAttribute('data-en') || el.getAttribute('data-ar'));
   });
+
+  document.dispatchEvent(new CustomEvent('langChange', { detail: { lang } }));
 }
 
 function initLang() {

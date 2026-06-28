@@ -419,6 +419,47 @@
     html[dir="rtl"] .sc-cta:hover .sc-cta-arrow { transform: translateX(-4px); }
 
     /* ═══════════════════════════════
+       FEATURED IMAGE
+    ═══════════════════════════════ */
+    .sc-featured { width: 100%; max-width: 480px; margin-bottom: 1.1rem; flex-shrink: 0; }
+
+    .sc-featured-img {
+      width: 100%; height: 200px; border-radius: 16px;
+      overflow: hidden; position: relative; cursor: pointer;
+      box-shadow: 0 14px 44px rgba(0,0,0,0.62), 0 0 0 1px rgba(255,255,255,0.1);
+    }
+    .sc-featured-main {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .sc-featured-img::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.68) 0%, transparent 55%),
+        linear-gradient(135deg, rgba(0,0,0,0.18) 0%, transparent 40%);
+    }
+    .sc-featured-info {
+      position: absolute; bottom: 0; inset-inline: 0; z-index: 2;
+      padding: 0.9rem 1.1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sc-featured-label {
+      font-size: 0.8rem; font-weight: 700; color: #fff; letter-spacing: 0.03em;
+    }
+    .sc-featured-counter {
+      font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px; padding: 0.18rem 0.58rem;
+    }
+    /* Selected thumbnail ring */
+    .sc-thumb.selected { border-color: rgba(255,255,255,0.55) !important; }
+    .sc-thumb.selected::before {
+      content: ''; position: absolute; inset: 0;
+      border: 2px solid rgba(255,255,255,0.42); border-radius: 9px; z-index: 3;
+    }
+
+    /* ═══════════════════════════════
        IMAGE GALLERY STRIP
     ═══════════════════════════════ */
     .sc-gallery {
@@ -676,8 +717,8 @@
                data-en="EPS & PU foam decorations, thermal insulation, custom 3D molds and premium foam products for all project types">
               ديكورات الفوم EPS وPU، عزل حراري ومائي، قوالب ثلاثية الأبعاد ومنتجات فوم مخصصة
             </p>
-            <a class="sc-card-link" href="hec.html" data-ar="استعرض HEC" data-en="Explore HEC">
-              استعرض HEC
+            <a class="sc-card-link" href="hec.html">
+              <span data-ar="استعرض HEC" data-en="Explore HEC">استعرض HEC</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </div>
@@ -719,8 +760,8 @@
                data-en="Planning and managing large-scale events, conferences, exhibitions and special occasions with highest standards">
               تنظيم وإدارة الفعاليات الكبرى والمؤتمرات والمعارض والمناسبات الخاصة
             </p>
-            <a class="sc-card-link" href="events.html" data-ar="استعرض الفعاليات" data-en="Explore Events">
-              استعرض الفعاليات
+            <a class="sc-card-link" href="events.html">
+              <span data-ar="استعرض الفعاليات" data-en="Explore Events">استعرض الفعاليات</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </div>
@@ -768,8 +809,8 @@
                data-en="Design and installation of artistic decorative walls using the latest technologies for all spaces">
               تصميم وتنفيذ جدران ديكورية فنية باستخدام أحدث التقنيات والمواد
             </p>
-            <a class="sc-card-link" href="walls.html" data-ar="استعرض الجدران" data-en="Explore Walls">
-              استعرض الجدران
+            <a class="sc-card-link" href="walls.html">
+              <span data-ar="استعرض الجدران" data-en="Explore Walls">استعرض الجدران</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </div>
@@ -812,8 +853,8 @@
                data-en="A diverse range of specialized innovative solutions tailored to unique needs exceeding all expectations">
               مجموعة متنوعة من الحلول المتخصصة والمبتكرة لتلبية احتياجاتكم
             </p>
-            <a class="sc-card-link" href="others.html" data-ar="استعرض الحلول" data-en="Explore More">
-              استعرض الحلول
+            <a class="sc-card-link" href="others.html">
+              <span data-ar="استعرض الحلول" data-en="Explore More">استعرض الحلول</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </div>
@@ -857,6 +898,17 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="m9 18 6-6-6-6"/></svg>
       </span>
     </a>
+
+    <!-- Featured image preview -->
+    <div class="sc-featured">
+      <div class="sc-featured-img" id="sc-featured-img">
+        <div class="sc-featured-main" id="sc-featured-main"></div>
+        <div class="sc-featured-info">
+          <span class="sc-featured-label" id="sc-featured-label">ديكور فندقي</span>
+          <span class="sc-featured-counter" id="sc-featured-counter">1 / 3</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Image gallery strip -->
     <div class="sc-gallery">
@@ -963,8 +1015,9 @@
 <script src="../js/animations.js"></script>
 <script>
 const NAV_ITEMS = [
-  { href: 'index.html', label_ar: 'الرئيسية', label_en: 'Home' },
-  { href: 'hec.html',   label_ar: 'HEC',       label_en: 'HEC'  },
+  { href: 'index.html',   label_ar: 'الرئيسية', label_en: 'Home'    },
+  { href: 'about.html',   label_ar: 'عن أفاق',  label_en: 'About'   },
+  { href: 'contact.html', label_ar: 'تواصل',    label_en: 'Contact' },
 ];
 function renderNav() {
   const navLinks  = document.querySelector('.nav-links');
@@ -986,26 +1039,86 @@ function renderNav() {
 }
 
 function initShowcase() {
-  const cards    = Array.from(document.querySelectorAll('.sc-card'));
-  const bgs      = document.querySelectorAll('.sc-bg');
-  const dots     = document.querySelectorAll('.sc-nav-dot');
-  const imgSets  = document.querySelectorAll('.sc-img-set');
-  const titleEl  = document.getElementById('sc-title');
-  const subEl    = document.getElementById('sc-sub');
-  const pillTxt  = document.getElementById('sc-pill-text');
-  const ctaEl    = document.getElementById('sc-cta');
-  const ctaTxt   = document.getElementById('sc-cta-text');
-  const flashEl  = document.getElementById('sc-flash');
-  const prevBtn  = document.getElementById('sc-prev');
-  const nextBtn  = document.getElementById('sc-next');
+  const cards     = Array.from(document.querySelectorAll('.sc-card'));
+  const bgs       = document.querySelectorAll('.sc-bg');
+  const dots      = document.querySelectorAll('.sc-nav-dot');
+  const imgSets   = document.querySelectorAll('.sc-img-set');
+  const titleEl   = document.getElementById('sc-title');
+  const subEl     = document.getElementById('sc-sub');
+  const pillTxt   = document.getElementById('sc-pill-text');
+  const ctaEl     = document.getElementById('sc-cta');
+  const ctaTxt    = document.getElementById('sc-cta-text');
+  const flashEl   = document.getElementById('sc-flash');
+  const prevBtn   = document.getElementById('sc-prev');
+  const nextBtn   = document.getElementById('sc-next');
+  const featMain  = document.getElementById('sc-featured-main');
+  const featLabel = document.getElementById('sc-featured-label');
+  const featCnt   = document.getElementById('sc-featured-counter');
+  const allThumbs = Array.from(document.querySelectorAll('.sc-thumb'));
   if (!cards.length) return;
 
   let current = 0;
   const total = cards.length;
+  let activeFeat = { p: 0, i: 0 };
+
+  /* ── Image data (same URLs as CSS bg-images, higher resolution) ── */
+  const IMGS = [
+    [
+      { src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=750&fit=crop&auto=format&q=85', ar:'ديكور فندقي',   en:'Hotel Decor' },
+      { src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&h=750&fit=crop&auto=format&q=85', ar:'عزل حراري',     en:'Thermal Insulation' },
+      { src:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format&q=85', ar:'قوالب مخصصة',   en:'Custom Molds' },
+    ],
+    [
+      { src:'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=750&fit=crop&auto=format&q=85', ar:'مؤتمرات',       en:'Conferences' },
+      { src:'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=750&fit=crop&auto=format&q=85', ar:'معارض',         en:'Exhibitions' },
+      { src:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&h=750&fit=crop&auto=format&q=85', ar:'مناسبات',       en:'Occasions' },
+    ],
+    [
+      { src:'https://images.unsplash.com/photo-1615873968403-89e068629265?w=1200&h=750&fit=crop&auto=format&q=85', ar:'جدار تجاري',    en:'Commercial Wall' },
+      { src:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=750&fit=crop&auto=format&q=85', ar:'تصميم داخلي',  en:'Interior Design' },
+      { src:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=750&fit=crop&auto=format&q=85', ar:'فن معماري',     en:'Architectural Art' },
+    ],
+    [
+      { src:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=750&fit=crop&auto=format&q=85', ar:'مشاريع خاصة',  en:'Custom Projects' },
+      { src:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=750&fit=crop&auto=format&q=85', ar:'حلول مبتكرة',   en:'Innovative Solutions' },
+      { src:'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1200&h=750&fit=crop&auto=format&q=85', ar:'تركيبات خاصة', en:'Special Installations' },
+    ],
+  ];
 
   function lg() { return document.documentElement.lang === 'ar' ? 'ar' : 'en'; }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
+  /* ── Featured image ── */
+  function setFeaturedImg(pIdx, iIdx, animate) {
+    const img = IMGS[pIdx]?.[iIdx];
+    if (!img || !featMain) return;
+    activeFeat = { p: pIdx, i: iIdx };
+    const label = img[lg()];
+    const total3 = IMGS[pIdx].length;
+
+    function applyFeat() {
+      featMain.style.backgroundImage = `url('${img.src}')`;
+      if (featLabel) featLabel.textContent = label;
+      if (featCnt)   featCnt.textContent   = `${iIdx + 1} / ${total3}`;
+    }
+
+    allThumbs.forEach(t => t.classList.remove('selected'));
+    const set = document.querySelector(`.sc-img-set[data-for="${pIdx}"]`);
+    if (set) { const t = set.querySelectorAll('.sc-thumb')[iIdx]; if (t) t.classList.add('selected'); }
+
+    if (!animate || typeof anime === 'undefined') { applyFeat(); return; }
+    anime.remove(featMain);
+    anime({
+      targets: featMain, opacity: [1, 0], scale: [1, 1.025],
+      duration: 200, easing: 'easeInQuad',
+      complete() {
+        applyFeat();
+        anime({ targets: featMain, opacity: [0, 1], scale: [0.97, 1], duration: 560, easing: 'easeOutExpo' });
+      }
+    });
+  }
+
+  /* ── Hero text ── */
   function updateHero(card, animate) {
     const l = lg();
     const title = card.dataset['title' + cap(l)] || card.dataset.titleAr || '';
@@ -1023,32 +1136,25 @@ function initShowcase() {
     }
 
     if (!animate || typeof anime === 'undefined') { apply(); return; }
-
     const targets = [titleEl, subEl, ctaEl].filter(Boolean);
     anime({
       targets, opacity: [1, 0], translateY: [0, -16], scale: [1, 0.97],
       duration: 180, easing: 'easeInQuad',
       complete() {
         apply();
-        anime({
-          targets, opacity: [0, 1], translateY: [18, 0], scale: [0.97, 1],
-          duration: 520, easing: 'easeOutExpo',
-          delay: anime.stagger(50)
-        });
+        anime({ targets, opacity: [0, 1], translateY: [18, 0], scale: [0.97, 1], duration: 520, easing: 'easeOutExpo', delay: anime.stagger(50) });
       }
     });
   }
 
+  /* ── Gallery ── */
   function updateGallery(idx, animate) {
-    imgSets.forEach((set, i) => {
+    imgSets.forEach(set => {
       const isActive = parseInt(set.dataset.for) === idx;
       if (isActive) {
         set.classList.add('active');
         if (animate && typeof anime !== 'undefined') {
-          anime({ targets: set.querySelectorAll('.sc-thumb'),
-                  translateY: [14, 0], opacity: [0, 1],
-                  duration: 420, easing: 'easeOutExpo',
-                  delay: anime.stagger(60) });
+          anime({ targets: set.querySelectorAll('.sc-thumb'), translateY: [14, 0], opacity: [0, 1], duration: 420, easing: 'easeOutExpo', delay: anime.stagger(60) });
         }
       } else {
         set.classList.remove('active');
@@ -1056,6 +1162,7 @@ function initShowcase() {
     });
   }
 
+  /* ── Activate card ── */
   function activate(idx, animate = true) {
     current = ((idx % total) + total) % total;
     const activeCard = cards[current];
@@ -1066,6 +1173,7 @@ function initShowcase() {
 
     updateHero(activeCard, animate);
     updateGallery(current, animate);
+    setFeaturedImg(current, 0, animate);
 
     if (typeof anime !== 'undefined' && animate) {
       anime({ targets: flashEl, opacity: [0, 1, 0], duration: 550, easing: 'easeOutExpo' });
@@ -1075,6 +1183,22 @@ function initShowcase() {
     }
   }
 
+  /* ── Thumbnail clicks → featured image ── */
+  allThumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const set = thumb.closest('.sc-img-set');
+      if (!set || !set.classList.contains('active')) return;
+      const pIdx = parseInt(set.dataset.for);
+      const iIdx = Array.from(set.querySelectorAll('.sc-thumb')).indexOf(thumb);
+      if (iIdx < 0) return;
+      if (typeof anime !== 'undefined') {
+        anime({ targets: thumb, scale: [1, 0.91, 1], duration: 300, easing: 'easeOutElastic(1,0.5)' });
+      }
+      setFeaturedImg(pIdx, iIdx, true);
+    });
+  });
+
+  /* ── Controls ── */
   cards.forEach((card, i) => card.querySelector('.sc-card-header').addEventListener('click', () => activate(i)));
   dots.forEach((dot, i) => dot.addEventListener('click', () => activate(i)));
   prevBtn && prevBtn.addEventListener('click', () => activate(current - 1));
@@ -1096,22 +1220,13 @@ function initShowcase() {
 
   document.addEventListener('langChange', () => {
     updateHero(cards[current], false);
-    const l = lg();
-    cards.forEach(card => {
-      ['.sc-card-name', '.sc-card-badge', '.sc-card-desc', '.sc-card-link'].forEach(sel => {
-        const el = card.querySelector(sel);
-        if (el && el.dataset[l]) {
-          if (sel === '.sc-card-link' && el.childNodes[0]) el.childNodes[0].textContent = el.dataset[l] + ' ';
-          else el.textContent = el.dataset[l];
-        }
-      });
-    });
-    document.querySelectorAll('.sc-thumb-label').forEach(el => {
-      if (el.dataset[l]) el.textContent = el.dataset[l];
-    });
-    const galLabel = document.querySelector('.sc-gallery-label');
-    if (galLabel && galLabel.dataset[l]) galLabel.textContent = galLabel.dataset[l];
+    // Featured image label re-translate
+    const img = IMGS[activeFeat.p]?.[activeFeat.i];
+    if (featLabel && img) featLabel.textContent = img[lg()];
   });
+
+  // Initialize: set hero + featured image from current saved lang
+  activate(0, false);
 }
 
 function initEntrance() {
@@ -1122,7 +1237,7 @@ function initEntrance() {
     .add({ targets: '#sc-title',  translateY: [44, 0], opacity: [0, 1], duration: 800 }, 480)
     .add({ targets: '#sc-sub',    translateY: [22, 0], opacity: [0, 1], duration: 580 }, 750)
     .add({ targets: '#sc-cta',    translateY: [16, 0], opacity: [0, 1], scale: [0.88, 1], duration: 500, easing: 'spring(1,80,12,0)' }, 920)
-    .add({ targets: '.sc-gallery',translateY: [20, 0], opacity: [0, 1], duration: 500 }, 1050)
+    .add({ targets: '.sc-featured,.sc-gallery', translateY: [20, 0], opacity: [0, 1], duration: 500 }, 1050)
     .add({
       targets: '.sc-card',
       translateX: [isRtl ? 32 : -32, 0], opacity: [0, 1],
