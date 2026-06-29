@@ -759,9 +759,9 @@ html.anime-ready .hero-title .line { animation: none; }
 .hero-title .accent  { color: var(--accent); }
 .hero-title .outline { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.38); }
 
-/* Light mode overrides */
-html:not(.dark) .hero-title         { color: var(--text); }
-html:not(.dark) .hero-title .outline { -webkit-text-stroke: 2px rgba(0,0,0,0.22); }
+/* Light mode: hero bg is always dark, keep white text */
+html:not(.dark) .hero-title         { color: #fff; }
+html:not(.dark) .hero-title .outline { -webkit-text-stroke: 2px rgba(255,255,255,0.38); }
 
 /* Desc */
 .hero-desc {
@@ -772,7 +772,7 @@ html:not(.dark) .hero-title .outline { -webkit-text-stroke: 2px rgba(0,0,0,0.22)
   max-width: 48ch;
   opacity: 0; /* Anime.js */
 }
-html:not(.dark) .hero-desc { color: var(--text-muted); }
+html:not(.dark) .hero-desc { color: rgba(255,255,255,0.65); }
 html.anime-ready .hero-desc { animation: none; }
 
 /* CTAs */
@@ -786,8 +786,8 @@ html.anime-ready .hero-desc { animation: none; }
   border-color: rgba(255,255,255,0.28) !important;
 }
 html:not(.dark) .hero-outline-btn {
-  color: var(--text) !important;
-  border-color: rgba(0,0,0,0.22) !important;
+  color: rgba(255,255,255,0.9) !important;
+  border-color: rgba(255,255,255,0.28) !important;
 }
 .hero-outline-btn:hover {
   color: var(--accent) !important;
@@ -812,12 +812,12 @@ html:not(.dark) .hero-outline-btn {
   color: rgba(255,255,255,0.5);
   white-space: nowrap;
 }
-html:not(.dark) .hero-stat-lbl { color: var(--text-muted); }
+html:not(.dark) .hero-stat-lbl { color: rgba(255,255,255,0.6); }
 .hero-stat-sep {
   width: 1px; height: 2.2rem; background: rgba(255,255,255,0.15);
   flex-shrink: 0;
 }
-html:not(.dark) .hero-stat-sep { background: var(--border); }
+html:not(.dark) .hero-stat-sep { background: rgba(255,255,255,0.18); }
 
 /* ─── HERO VISUAL COLUMN ─────────────────────────────────── */
 .hero-visual-col {
@@ -882,7 +882,7 @@ html.anime-ready .hero-scroll-indicator { animation: none; }
   font-size: var(--text-xs); letter-spacing: 0.12em;
   color: rgba(255,255,255,0.65); text-transform: uppercase; font-weight: 600;
 }
-html:not(.dark) .hero-scroll-indicator span { color: var(--text-muted); }
+html:not(.dark) .hero-scroll-indicator span { color: rgba(255,255,255,0.6); }
 .scroll-line-wrap {
   width: 1.5px; height: 2.5rem;
   background: rgba(255,255,255,0.2);
