@@ -28,6 +28,33 @@
   <link rel="stylesheet" href="../css/modal.css">
   <!-- Anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+
+  <style>
+    /* HEC drill-down nav */
+    .nav-links.hec-subnav {
+      overflow-x: auto; overflow-y: hidden;
+      scrollbar-width: none;
+      flex: 1; min-width: 0;
+    }
+    .nav-links.hec-subnav::-webkit-scrollbar { display: none; }
+
+    .nav-back-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.3rem; flex-shrink: 0;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+      transition: background 0.22s;
+    }
+    .nav-back-btn:hover { background: rgba(var(--accent-rgb), 0.22); }
+    .nav-back-btn svg { flex-shrink: 0; }
+  </style>
 </head>
 <body>
 
@@ -251,7 +278,7 @@
 <!-- ════════════════════════════════════════════════════════
      PROJECTS BENTO GALLERY
 ════════════════════════════════════════════════════════ -->
-<section class="section" style="background:var(--bg)">
+<section class="section" id="gallery-section" style="background:var(--bg)">
   <div class="container">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem">
       <div class="reveal">
@@ -418,7 +445,149 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFeaturedGrid();
   renderStatsGrid();
   renderGalleryBento();
+  renderHecNav();
 });
+
+/* ── HEC drill-down nav (stack-based, unlimited depth) ── */
+function renderHecNav() {
+  const navEl  = document.querySelector('.nav-links');
+  const mobNav = document.querySelector('.mobile-nav');
+
+  const TOP = [
+    { id: 'printing', ar: 'ألواح الطباعة الجاهزة', en: 'Ready-Print Panels', hasSub: true },
+    { id: 'panels',   ar: 'ألواح و كرانيش',         en: 'Panels & Cornices',  hasSub: true },
+    { id: 'gallery',  ar: 'صور من أعمالنا',          en: 'Our Works',          hasSub: true },
+  ];
+
+  const SUBS = {
+    printing: [
+      'بديل الحجر', 'بديل الطوب', 'بديل الصخر',
+      'بديل الجدران الخشب', 'بديل الجدران الرخام', 'بديل الجدران الرخامية',
+      'بديل الجدران النحيف', '3D ألواح', 'صور عن المنتج',
+    ],
+    panels: [
+      'أعمدة', 'ألواح جديدة', 'إضاءة مخفية', 'دعامات أمامية',
+      'كرانيش التاج', 'ديكور داخلي', 'زوايا حجرية', 'أحدث مشاريعنا',
+      'قاعدة وعمود', 'قطع طولية', 'نقوش وزخارف', 'موديلات الكرانيش', 'موديلات النوافذ',
+    ],
+    gallery: [
+      { id: 'gallery_cities', ar: 'مدن سكنية', en: 'Residential Cities', hasSub: true },
+      'قصور وأستراحات',
+      'فنادق وأبراج',
+      'فيلا',
+      'عمارة',
+      'أخري',
+    ],
+    gallery_cities: [
+      'مدينة الورود / الطائف',
+      'مدينة روابى الحجاز / جدة',
+      'مدينة مرسيا / الرياض',
+    ],
+  };
+
+  /* navigation stack — always starts at ['top'] */
+  let stack = ['top'];
+
+  function getItems(levelId) {
+    return levelId === 'top' ? TOP : (SUBS[levelId] || []);
+  }
+
+  function goTo(levelId) {
+    stack.push(levelId);
+    renderLevel();
+  }
+
+  function goBack() {
+    if (stack.length > 1) stack.pop();
+    renderLevel();
+  }
+
+  function buildDesktop(items, withBack) {
+    if (!navEl) return;
+    navEl.innerHTML = '';
+    navEl.classList.toggle('hec-subnav', withBack);
+
+    if (withBack) {
+      const btn = document.createElement('button');
+      btn.className = 'nav-back-btn';
+      btn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="m9 18 6-6-6-6"/></svg><span>رجوع</span>`;
+      btn.addEventListener('click', goBack);
+      navEl.appendChild(btn);
+    }
+
+    const lang = window.LANG || 'ar';
+    items.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'nav-link';
+      if (typeof item === 'string') {
+        a.href = '#';
+        a.textContent = item;
+        a.addEventListener('click', e => e.preventDefault());
+      } else {
+        a.href = item.href || '#';
+        a.setAttribute('data-ar', item.ar);
+        a.setAttribute('data-en', item.en || item.ar);
+        a.textContent = lang === 'ar' ? item.ar : (item.en || item.ar);
+        if (item.hasSub) {
+          a.addEventListener('click', e => { e.preventDefault(); goTo(item.id); });
+        } else if (item.href && item.href.startsWith('#')) {
+          a.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+      }
+      navEl.appendChild(a);
+    });
+
+    if (typeof initNavBlob === 'function') initNavBlob();
+  }
+
+  function buildMobile(items, withBack) {
+    if (!mobNav) return;
+    mobNav.innerHTML = '';
+    if (withBack) {
+      const btn = document.createElement('button');
+      btn.className = 'nav-link';
+      btn.style.cssText = 'display:flex;align-items:center;gap:0.4rem;background:none;border:none;width:100%;cursor:pointer;text-align:inherit;';
+      btn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="m9 18 6-6-6-6"/></svg>رجوع`;
+      btn.addEventListener('click', goBack);
+      mobNav.appendChild(btn);
+    }
+    const lang = window.LANG || 'ar';
+    items.forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'nav-link';
+      if (typeof item === 'string') {
+        a.href = '#'; a.textContent = item;
+        a.addEventListener('click', e => e.preventDefault());
+      } else {
+        a.href = item.href || '#';
+        a.textContent = lang === 'ar' ? item.ar : (item.en || item.ar);
+        if (item.hasSub) a.addEventListener('click', e => { e.preventDefault(); goTo(item.id); });
+      }
+      mobNav.appendChild(a);
+    });
+  }
+
+  function renderLevel() {
+    const levelId  = stack[stack.length - 1];
+    const items    = getItems(levelId);
+    const withBack = stack.length > 1;
+
+    if (navEl) {
+      navEl.style.transition = 'opacity 0.18s';
+      navEl.style.opacity = '0';
+      setTimeout(() => {
+        buildDesktop(items, withBack);
+        navEl.style.opacity = '1';
+      }, 190);
+    }
+    buildMobile(items, withBack);
+  }
+
+  renderLevel();
+}
 
 function renderCatsGrid() {
   const grid = document.getElementById('cats-grid');

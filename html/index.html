@@ -572,10 +572,32 @@
     /* ═══════════════════════════════
        RESPONSIVE
     ═══════════════════════════════ */
+    @media (max-width: 1500px) {
+      .sc-branding { padding: 1.2rem 3rem 1.2rem 2.5rem; }
+      .sc-featured-img { height: 180px; }
+      .sc-cta { margin-bottom: 1.4rem; }
+    }
+
+    @media (max-width: 1360px) {
+      .sc-branding { padding: 1rem 2rem 1rem 1.8rem; }
+      .sc-pill { margin-bottom: 0.6rem; }
+      .sc-main-title { font-size: clamp(2.2rem, 4vw, 4rem); margin-bottom: 0.6rem; }
+      .sc-sub { margin-bottom: 0.9rem; }
+      .sc-cta { margin-bottom: 1.1rem; padding: 0.72rem 1.7rem; }
+      .sc-featured-img { height: 158px; }
+      .sc-featured { margin-bottom: 0.7rem; }
+      .sc-thumb { height: 72px; }
+    }
+
     @media (max-width: 1100px) {
-      .sc-panel { width: 310px; }
-      .sc-branding { padding: 1rem 2.5rem 1rem 2rem; }
-      .sc-gallery { max-width: 380px; }
+      .sc-panel { width: 290px; }
+      .sc-branding { padding: 0.8rem 1.5rem 0.8rem 1.5rem; }
+      .sc-gallery { max-width: 360px; }
+      .sc-featured-img { height: 138px; }
+      .sc-thumb { height: 62px; }
+      .sc-main-title { font-size: clamp(2rem, 3.6vw, 3.6rem); margin-bottom: 0.5rem; }
+      .sc-sub { margin-bottom: 0.7rem; }
+      .sc-cta { margin-bottom: 0.9rem; }
     }
 
     @media (max-width: 840px) {
@@ -1217,6 +1239,34 @@ function initShowcase() {
     if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 45) activate(dy < 0 ? current + 1 : current - 1);
     else if (Math.abs(dx) > 55) activate(dx < 0 ? current + 1 : current - 1);
   }, { passive: true });
+
+  /* ── Auto-rotate ── */
+  const AUTO_MS = 2500;
+  let autoTimer = null;
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => activate((current + 1) % total), AUTO_MS);
+  }
+
+  function resetAuto() {
+    startAuto();
+  }
+
+  // Pause while hovering the card panel
+  const panelEl = document.getElementById('sc-panel');
+  if (panelEl) {
+    panelEl.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    panelEl.addEventListener('mouseleave', startAuto);
+  }
+
+  // Restart timer on any manual interaction so it doesn't cut off mid-read
+  cards.forEach((card, i) => card.querySelector('.sc-card-header').addEventListener('click', resetAuto));
+  dots.forEach(dot => dot.addEventListener('click', resetAuto));
+  prevBtn && prevBtn.addEventListener('click', resetAuto);
+  nextBtn && nextBtn.addEventListener('click', resetAuto);
+
+  startAuto();
 
   document.addEventListener('langChange', () => {
     updateHero(cards[current], false);
